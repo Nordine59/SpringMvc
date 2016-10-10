@@ -18,7 +18,9 @@
         <c:forEach items="${mesGenres}" var="monGenre">  
 
             <div> 
-            <b>${monGenre.nom}</b>
+                <b>${monGenre.nom}</b>   <!--renvoie vers le controleur( genre) et supprime l id -->
+                <a href="supprimer_genre/${monGenre.id}">Supprimer</a>
+                <a href="modifier_genre/${monGenre.id}">Editer</a>
             </div>
         </c:forEach>
 

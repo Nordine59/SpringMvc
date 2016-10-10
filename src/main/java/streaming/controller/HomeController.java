@@ -14,17 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author admin
  */
-
 @Controller
 public class HomeController {
-    
-    
-     @RequestMapping(value = "/",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/home_page", method = RequestMethod.GET)
     public String home(Model m) {
-        
+
         m.addAttribute("titre", "Bienvenue sur mon site");
 
         return "home_page.jsp";
-    
-}
+
+    }
 }

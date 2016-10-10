@@ -19,13 +19,13 @@ import streaming.entity.Film;
 @Controller
 @RequestMapping("/film")
 public class FilmController {
-    
-    @RequestMapping(value="find/{id}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "find/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Film findById( @PathVariable("id") long id){
-        
+    public Film findById(@PathVariable("id") long id) {
+
         Film f = new Film(1L, "Karate Kid", "blabla", 1989L, null);
-        
+
         return f;
     }
 }

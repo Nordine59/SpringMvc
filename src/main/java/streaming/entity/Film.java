@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
-
 /**
  *
  * @author tom
@@ -28,9 +26,9 @@ public class Film implements Serializable {
     private Long id;
 
     private String titre;
-    
+
     private String synopsis;
-    
+
     private Long anneeProd;
 
     public Film() {
@@ -40,17 +38,13 @@ public class Film implements Serializable {
         this.id = id;
         this.titre = titre;
         this.synopsis = synopsis;
-        
-        
-        
+
         this.anneeProd = anneeProd;
         this.genre = genre;
     }
-    
-    
-    
+
     @ManyToOne
-    @JoinColumn(name="genre_id")
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 
     public String getTitre() {
@@ -84,7 +78,7 @@ public class Film implements Serializable {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -117,5 +111,5 @@ public class Film implements Serializable {
     public String toString() {
         return "streaming.entity.Film[ id=" + id + " ]";
     }
-    
+
 }
