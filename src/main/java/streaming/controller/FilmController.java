@@ -5,27 +5,87 @@
  */
 package streaming.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import streaming.entity.Film;
+import streaming.service.FilmCrudService;
+import streaming.service.GenreCrudService;
 
 /**
  *
  * @author tom
  */
 @Controller
-@RequestMapping("/film")
 public class FilmController {
 
-    @RequestMapping(value = "find/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Film findById(@PathVariable("id") long id) {
+    @Autowired
+    public FilmCrudService service;
 
-        Film f = new Film(1L, "Karate Kid", "blabla", 1989L, null);
+    @Autowired
+    private GenreCrudService Service;
 
-        return f;
+    @RequestMapping(value = "/supprimer_film/{val}", method = RequestMethod.GET)
+    public String supprimer(@PathVariable("val") long idFilmASupprimer) {
+
+        service.delete(idFilmASupprimer);
+
+        return "redirect:/film_lister";
+
     }
+
+    @RequestMapping(value = {"/film_lister"}, method = RequestMethod.GET)
+    public String listerFilm(Model m) {
+
+        m.addAttribute("mesFilms", service.findAllByOrderByTitreAsc());
+
+        return "film_lister.jsp";
+
+    }
+
+    @RequestMapping(value = "/modifier_film/{idFilm}", method = RequestMethod.GET)
+    public String modifierFilm(@PathVariable("idFilm") long idFilm, Model model) {
+        // recup film
+        Film film = service.findOne(idFilm);
+        //prep attribut a destination jsp
+        model.addAttribute("filmAct", film);
+        //renvoie vers la jsp
+        return "modifier_film.jsp";
+    }
+
+    @RequestMapping(value = "/modifier_film", method = RequestMethod.POST)
+    public String modifierPost(@ModelAttribute("filmAct") Film film) {
+
+        service.save(film);
+
+        return "redirect:/film_lister";
+
+    }
+
+    @RequestMapping(value = "/ajouter_film", method = RequestMethod.GET)
+    public String ajouterFilm(Model model) {
+
+        Film f = new Film();
+       // f.setSynopsis("ici petit");
+
+        model.addAttribute("nouveauFilm", new Film());
+        model.addAttribute("genres", Service.findAll());
+
+        return "ajouter_film.jsp";
+    }
+    
+    @RequestMapping(value="/ajouter_film", method = RequestMethod.POST)
+    public String ajouterFilmPost(@ModelAttribute("nouveauFilm")Film film){
+    
+    
+    service.save(film);
+    
+   return "redirect:/film_lister";
+
+}
+    
 }

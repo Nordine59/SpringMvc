@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,12 +16,20 @@
     <body>
         <h1>Pirate-Stream : Liste des genres</h1>
 
-        <c:forEach items="${mesGenres}" var="monGenre">  
+
+        <a href="<spring:url value="/ajouter_genre"/>"><b>AJouter Genre</b></a>
+        <c:forEach items="${mesGenres}" var="monGenre"> 
 
             <div> 
-                <b>${monGenre.nom}</b>   <!--renvoie vers le controleur( genre) et supprime l id -->
-                <a href="supprimer_genre/${monGenre.id}">Supprimer</a>
+                <b>${monGenre.nom}</b> <a href="supprimer_genre/${monGenre.id}">Supprimer</a>
                 <a href="modifier_genre/${monGenre.id}">Editer</a>
+
+
+                <!--renvoie vers le controleur( genre) et supprime l id -->
+
+
+
+
             </div>
         </c:forEach>
 

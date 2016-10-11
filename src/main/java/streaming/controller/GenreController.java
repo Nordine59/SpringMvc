@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import static streaming.entity.Film_.genre;
 import streaming.entity.Genre;
 import streaming.service.GenreCrudService;
 
@@ -62,5 +63,24 @@ public class GenreController {
 
         return "redirect:/genre_lister";
     }
-
+    
+    @RequestMapping(value="/ajouter_genre", method = RequestMethod.POST)
+    public String ajouterGenrePost(@ModelAttribute("genreAct")Genre genre){
+        
+        service.save(genre);
+        
+        return "redirect:/genre_lister";
+    }
+    
+    
+    @RequestMapping(value="/ajouter_genre", method = RequestMethod.GET)
+    public String ajouterGenreGet (Model model)  {  
+    
+            
+            model.addAttribute("nouvGenre", new Genre());
+            
+            return "ajouter_genre.jsp";
+                    
+          
+}
 }
