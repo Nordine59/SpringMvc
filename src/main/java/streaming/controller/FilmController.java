@@ -52,13 +52,13 @@ public class FilmController {
         // recup film
         Film film = service.findOne(idFilm);
         //prep attribut a destination jsp
-        model.addAttribute("filmAct", film);
+        model.addAttribute("nouveauFilm", film);
         //renvoie vers la jsp
         return "modifier_film.jsp";
     }
 
     @RequestMapping(value = "/modifier_film", method = RequestMethod.POST)
-    public String modifierPost(@ModelAttribute("filmAct") Film film) {
+    public String modifierPost(@ModelAttribute("nouveauFilm") Film film) {
 
         service.save(film);
 

@@ -23,7 +23,7 @@
             <c:set var="modificationFilm">
                 <spring:url value="/modifier_film"/>
             </c:set>
-            <form:form action="${route}" modelAttribute="FilmAct">
+            <form:form action="${route}" modelAttribute="nouveauFilm">
                 <label>Nom du Film :</label>
                 <form:input path="titre"/>
                 <br>

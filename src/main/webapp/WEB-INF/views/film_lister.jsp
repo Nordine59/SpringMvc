@@ -21,8 +21,8 @@
                  <c:forEach items="${mesFilms}" var="monFilm"> 
 
                 <div> 
-                <b>${monFilm.titre}</b> <a href="supprimer_film/${monFIlm.id}">Supprimer</a>
-                <a href="modifier_film/${monfilm.id}">Editer</a>
+                <b>${monFilm.titre}</b> <a href="supprimer_film/${monFilm.id}">Supprimer</a>
+                <a href="modifier_film/${monFilm.id}">Editer</a>
 
 
                 <!--renvoie vers le controleur( genre) et supprime l id -->
