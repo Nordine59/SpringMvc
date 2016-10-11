@@ -20,7 +20,7 @@
 
         <div>
             <!--form biding pour tout recup-->
-            <c:set var="modificationFilm">
+            <c:set var="route">
                 <spring:url value="/modifier_film"/>
             </c:set>
             <form:form action="${route}" modelAttribute="nouveauFilm">

@@ -15,6 +15,6 @@ import streaming.entity.Film;
  */
 public interface FilmCrudService extends CrudRepository<Film, Long>{
 
-    public List<Film> findAllByOrderByTitreAsc();
+    public List<Film> findAllByOrderByAnneeProdDesc();
     
 }

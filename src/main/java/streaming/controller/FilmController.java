@@ -41,7 +41,7 @@ public class FilmController {
     @RequestMapping(value = {"/film_lister"}, method = RequestMethod.GET)
     public String listerFilm(Model m) {
 
-        m.addAttribute("mesFilms", service.findAllByOrderByTitreAsc());
+        m.addAttribute("mesFilms", service.findAllByOrderByAnneeProdDesc());
 
         return "film_lister.jsp";
 

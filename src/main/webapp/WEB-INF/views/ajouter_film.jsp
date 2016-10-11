@@ -3,6 +3,8 @@
     Created on : 11 oct. 2016, 11:03:11
     Author     : admin
 --%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +17,9 @@
     </head>
     <body>
         <h1>Nouveau Film</h1>
+        <c:set var="caca">
+            <spring:url value="/film_lister"/>  
+        </c:set>
         <form:form modelAttribute="nouveauFilm">
             <label>TITRE</label>
            <form:input path="titre"/> 
